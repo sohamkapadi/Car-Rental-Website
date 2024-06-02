@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Location Details</title>
+    <style>
+        #map {
+            height: 400px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+<div id="map"></div>
+
+<script>
+    var selectedLocation = null; 
+
+    function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 12,
+            center: {lat: 19.076090, lng: 72.877426} 
+        });
+
+        var marker = new google.maps.Marker({
+            map: map,
+            draggable: true, 
+            animation: google.maps.Animation.DROP,
+            position: map.getCenter()
+        });
+
+        
+        google.maps.event.addListener(marker, 'dragend', function(event) {
+            selectedLocation = event.latLng; 
+            console.log(selectedLocation); 
+        });
+    }
+
+    function loadMap() {
+        var script = document.createElement('script');
+        script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyAnFqeZfLV5PlAvZ48Ssr5BWYZD0nxTnWE&callback=initMap`;
+        document.body.appendChild(script);
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', loadMap);
+    } else {
+        loadMap();
+    }
+
+     function submitForm() {
+        // If selectedLocation is null, return false to prevent form submission
+        if (!selectedLocation) {
+            console.error('No location selected');
+            return false;
+        }
+        
+        // Extract latitude and longitude from selectedLocation
+        var lat = selectedLocation.lat();
+        var lng = selectedLocation.lng();
+
+        // Create a hidden input field for latitude
+        var latInput = document.createElement('input');
+        latInput.type = 'hidden';
+        latInput.name = 'latitude';
+        latInput.value = lat;
+
+        // Create a hidden input field for longitude
+        var lngInput = document.createElement('input');
+        lngInput.type = 'hidden';
+        lngInput.name = 'longitude';
+        lngInput.value = lng;
+
+        // Append the hidden input fields to the form
+        var form = document.querySelector('form');
+        form.appendChild(latInput);
+        form.appendChild(lngInput);
+        
+        // Submit the form
+        form.submit();
+    }
+</script>
+
+<form method="POST" action="/location" onsubmit="submitForm(); return false;">
+  <input class="btn" type="submit" value="Submit">
+</form>
+
+</body>
+</html>

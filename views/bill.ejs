@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generate bill</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            width: 80%;
+            background-color: #fff;
+            margin-top:170px;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            right: 0;
+            z-index: 1000;
+            background-color: #eeeff1;
+            padding: 15px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: flex-end; 
+            padding-right: 20px;
+        }
+
+        .navbar li {
+            position: relative;
+            list-style: none;
+            margin-right: 20px; 
+        }
+        .navbar a {
+            font-size: 1rem;
+            padding: 10px 20px;
+            color: #444;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .navbar a:hover {
+            color: #fe5b3d;
+        }
+        
+        .section {
+            margin-bottom: 30px;
+        }
+        .section h3 {
+            margin-bottom: 10px;
+            border-bottom: 2px solid #fe5b3d;
+            padding-bottom: 5px;
+            color: #fe5b3d;
+        }
+
+        .download-btn {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .download-btn button {
+            background-color: #fe5b3d;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .download-btn button:hover {
+            background-color: #ffac38;
+        }
+
+        .item {
+            margin-bottom: 10px;
+        }
+        .total {
+            font-weight: bold;
+            margin-top: 20px;
+            text-align: right;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul class="navbar">
+                <li><a href="/home">Home</a></li>
+                <li><a href="/services">Services</a></li>
+                <li><a href="/home#about">About</a></li>
+                <li><a href="/home#reviews">Reviews</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        <div class="header">
+            <h1>Bill</h1>
+        </div>
+        <div class="bill-details">
+            <div class="section car">
+                <h3>Car Details</h3>
+                <div class="item">
+                    <p><strong>Name:</strong> <%= carName %></p>
+                </div>
+                <div class="item">
+                    <p><strong>Registration ID:</strong> <%= carRegistrationID %></p>
+                </div>
+                <div class="item">
+                    <p><strong>Price:</strong> $<%= carPrice %> /day</p>
+                </div>
+            </div>
+            <div class="section user">
+                <h3>User Details</h3>
+                <div class="item">
+                    <p><strong>Name:</strong> <%= user.name %></p>
+                </div>
+                <div class="item">
+                    <p><strong>Email_ID</strong> <%= user.email_ID %></p>
+                </div>
+            </div>
+            <div class="section location">
+                <h3>Location and Date</h3>
+                <div class="item">
+                    <p><strong>Location:</strong> <%= selectedLocation %></p>
+                </div>
+                <div class="item">
+                    <p><strong>Pickup Date:</strong> <%= pickupDate %></p>
+                </div>
+                <div class="item">
+                    <p><strong>Return Date:</strong> <%= returnDate %></p>
+                </div>
+            </div>
+            <div class="section total">
+                <h3>Total Amount</h3>
+                <div class="item">
+                    <p><strong>No. of Days:</strong> <%= days %></p>
+                </div>
+                <div class="item">
+                    <p><strong>Total:</strong> $<%= totalPrice %></p>
+                </div>
+            </div>
+        </div>
+
+        <form class="download-btn" method="post" action="/bill">
+            <input type="hidden" name="carName" value="<%= carName %>">
+            <input type="hidden" name="carRegistrationID" value="<%= carRegistrationID %>">
+            <input type="hidden" name="carPrice" value="<%= carPrice %>">
+            <input type="hidden" name="selectedLocation" value="<%= selectedLocation %>">
+            <input type="hidden" name="pickupDate"  value="<%= pickupDate %>">
+            <input type="hidden" name="returnDate"  value="<%= returnDate %>">
+            <input type="hidden" name="days"  value="<%= days %>">
+            <input type="hidden" name="totalPrice"  value="<%= totalPrice %>">
+            <button type="submit" class="btn">Download</button>
+        </form>
+    </div>
+
+</body>
+</html>

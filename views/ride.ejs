@@ -1,0 +1,332 @@
+<!-- ride.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ride Details</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    right: 0;
+    z-index: 1000;
+    background-color: #eeeff1;
+    padding: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar {
+    display: flex;
+    justify-content: flex-end; /* Align to the right */
+    padding-right: 20px; /* Add padding to the right */
+}
+
+.navbar li {
+    position: relative;
+    list-style: none; /* Remove the list-style */
+    margin-right: 20px; /* Add margin between menu items */
+}
+.navbar a {
+    font-size: 1rem;
+    padding: 10px 20px;
+    color: #444;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.navbar a:hover {
+    color: #fe5b3d;
+}
+
+
+section {
+    padding: 50px 100px;
+}
+
+.heading {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.heading h1 {
+    font-size: 2.5rem;
+    color: #333;
+}
+
+.ride-container .box .car-details {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.ride-container .box .car-details p {
+    margin-bottom: 15px;
+    font-size: 16px;
+    color: #555;
+}
+
+.ride-container .box .car-details .detail-title {
+    font-weight: bold;
+    color: #fe5b3d;
+}
+
+.btn {
+    padding: 12px 36px;
+    border: none;
+    border-radius: 5px;
+    background: #fe5b3d;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #ffac38;
+}
+
+footer {
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #eeeff1;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.social a {
+    color: #444;
+    padding: 10px;
+    font-size: 21px;
+}
+
+@media (max-width: 991px) {
+    header {
+        padding: 10px 40px;
+    }
+    section {
+        padding: 50px 40px;
+    }
+}
+
+@media (max-width: 881px) {
+    .home {
+        background-position: left;
+    }
+    .form-container form {
+        bottom: 0.2rem;
+        left: 40px;
+    }
+}
+
+@media (max-width: 781px) {
+    header {
+        padding: 11px 40px;
+    }
+
+    .text h1 {
+        font-size: 2.5rem;
+    }
+
+    .home {
+        grid-template-columns: 1fr;
+    }
+
+    .form-container form {
+        position: unset;
+    }
+
+    header .navbar {
+        position: absolute;
+        top: -500px;
+        left: 0;
+        right: 0;
+        display: flex;
+        flex-direction: column;
+        background: #fff;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+        transition: 0.2s ease;
+        text-align: left;
+    }
+
+    .navbar.active {
+        top: 100%;
+    }
+
+    .navbar a {
+        padding: 1rem;
+        border-left: 2px solid var(--main-color);
+        margin: 1rem;
+        display: block;
+    }
+
+    .navbar a:hover {
+        color: #fff;
+        background: var(--main-color);
+        border: none;
+    }
+
+    .navbar a::after {
+        display: none;
+    }
+
+    .heading span {
+        font-size: 0.9rem;
+        font-weight: 500;
+    }
+
+    .heading h1 {
+        font-size: 1.3rem;
+    }
+
+    .about-container {
+        grid-template-columns: 1fr;
+    }
+
+    .about-img {
+        padding: 1rem;
+        order: 2;
+    }
+}
+
+@media (max-width: 568px) {
+    .copyright {
+        flex-direction: column;
+    }
+
+    .newsletter .box {
+        width: 248px;
+    }
+
+    .form-container {
+        padding-top: 2rem;
+    }
+}
+
+@media (max-width: 350px) {
+    header {
+        padding: 6px 14px;
+    }
+
+    .logo-img {
+        width: 30px;
+    }
+
+    section {
+        padding: 50px 14px;
+    }
+
+    .header-btn .sign-in {
+        padding: 7px 10px;
+        font-size: 14px;
+        font-weight: 400;
+    }
+
+    .text h1 {
+        font-size: 2rem;
+    }
+
+    .services-container {
+        grid-template-columns: repeat(auto-fit, minmax(250px, auto));
+    }
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul class="navbar">
+                <li><a href="/home">Home</a></li>
+                <li><a href="/services">Services</a></li>
+                <li><a href="/home#about">About</a></li>
+                <li><a href="/home#reviews">Reviews</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section class="ride-details">
+        <div class="heading">
+            <h1><strong>Ride Details</strong></h1>
+        </div>
+
+        <div class="ride-container">
+            <div class="box">
+                <div class="bx">
+                    <h2><strong>Car Details</strong></h2>
+                </div>
+                <div class="car-details">
+                    <% if(cars) { %>
+                        <p><strong>Name:</strong> <%= cars.name %></p>
+                        
+                        <p><strong>Registration ID:</strong> <%= cars.reg_ID %></p>
+                        
+                        <p><strong>Price: $</strong> <%= cars.price %>/day</p>
+                        
+                    <% } else { %>
+                        <form action="/services" method="get">
+                            <button>Select car</button>
+                        </form>
+                    <% } %>
+                </div>
+            </div>
+        </div>        
+
+        <div class="location-container">
+            <div class="heading">
+                <h1>Select Location</h1>
+                <% if(location) { %>
+                    <p>Selected Location: <%= location %></p>
+                    <form action="/location" method="get">
+                        <button>Select Location</button>
+                    </form>
+                <% } else { %>
+                    <form action="/location" method="get">
+                        <button>Select Location</button>
+                    </form>
+                <% } %>
+            </div>
+        </div>
+        <form class="ride-form" method="post" action="/submit">
+            <input type="hidden" name="carName" value="<%= cars.name %>">
+            <input type="hidden" name="carRegistrationID" value="<%= cars.reg_ID %>">
+            <input type="hidden" name="carPrice" value="<%= cars.price %>">
+            <input type="hidden" name="selectedLocation" value="<%= location %>">
+            <div class="input-box">
+                <span>Pickup Date</span>
+                <input type="date" name="pickupDate" required>
+            </div>
+            <div class="input-box">
+                <span>Return Date</span>
+                <input type="date" name="returnDate" required>
+            </div>
+            <button type="submit" class="btn">Submit</button>
+        </form>
+        
+
+    </section>
+
+    <footer>
+        <div class="copyright">
+            <p>&copy; 2024 Your Company</p>
+            <div class="social">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+</head>
+<body>
+    
+    <section class="services" id="services">
+        <div class="heading">
+            <span>Best Services</span>
+            <h1>Explore Out Top Deals <br>From Top Rated Dealers</h1>
+        </div>
+        <div class="services-container">
+            <% cars.forEach(function(car, index) { %>
+                <div class="box">
+                    <div class="box-img">
+                        <img src="<%= 'car' + (index+1)+ '.jpg' %>" alt="<%= car.name %>">
+                    </div>
+                    <p>2024</p>
+                    <h3><%= car.name %></h3>
+                    <h2>$<%= car.price %><span>/day</span></h2>
+                    <form  action="/services" method="post">
+                        <input type="hidden" name="reg_ID" value="<%= car.reg_ID %>">
+                        <input class="btn" type="submit" value="Book Now">
+                    </form>
+                </div>
+            <% }); %>
+        </div>
+    </section>
+</body>
+</html>

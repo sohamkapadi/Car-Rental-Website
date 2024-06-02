@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin-top: 100px;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            width: 100%;
+            min-height: 100vh;
+            position: relative;
+            background: url(car_website.png);
+            background-repeat: no-repeat;
+            background-position: center 70%;
+            background-size: cover;
+            display: grid;
+            align-items: center;
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            right: 0;
+            z-index: 1000;
+            background-color: #eeeff1;
+            padding: 15px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: flex-end;
+            padding-right: 20px;
+            margin: 0;
+            list-style: none;
+        }
+
+        .navbar li {
+            margin-right: 20px;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            font-size: 1rem;
+            color: #444;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .navbar a:hover {
+            color: #fe5b3d;
+        }
+
+        .about {
+
+            padding: 20px;
+            padding-top:0;
+            display: flex;
+            flex-direction: column;
+            color: #444;
+            text-align: justify; 
+            align-self: flex-start; 
+            margin: 0;
+        }
+
+        .about h1 {
+            color:black;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .about p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul class="navbar">
+                <li><a href="/home">Home</a></li>
+                <li><a href="/services">Services</a></li>
+                <li><a href="/home#about" class="active">About</a></li>
+                <li><a href="/home#reviews">Reviews</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="about">
+        <h1><strong>About Us</strong></h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis volutpat odio. Donec faucibus, mauris a aliquam tempor, nulla sapien suscipit mauris, in consequat ex dui et ipsum. Nulla facilisi. Mauris consectetur sapien in magna sodales vehicula.</p>
+        <p>Fusce at lectus non orci viverra faucibus. Morbi malesuada nisl id augue convallis tempus. Nullam euismod metus a enim hendrerit blandit. Vestibulum dignissim leo et est posuere, in pharetra nulla tincidunt.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer dui ante, egestas sed ex sit amet, laoreet tincidunt mi. Ut eget faucibus magna. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vestibulum imperdiet dolor vitae augue malesuada, vitae tempus lorem finibus.</p>
+    </div>
+</body>
+</html>
