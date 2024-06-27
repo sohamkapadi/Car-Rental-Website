@@ -28,6 +28,7 @@ router.get("/signout", (req,res)=>{
     user=null;
     res.redirect("/");
 });
+
 router.get("/home",(req,res)=>{
     res.render("home.ejs");
 });
